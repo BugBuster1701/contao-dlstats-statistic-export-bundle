@@ -1,0 +1,54 @@
+{
+  "name": "bugbuster/contao-dlstats-statistic-export-bundle",
+  "type": "contao-bundle",
+  "description": "Contao Module dlstats Add-on: Statistic Export",
+  "keywords": [
+    "contao",
+    "downloads",
+    "counter",
+    "export"
+  ],
+  "license": "LGPL-3.0+",
+  "authors": [
+    {
+      "name": "Glen Langer",
+      "homepage": "http://www.contao.glen-langer.de",
+      "role": "Developer"
+    },
+    {
+      "name": "Alexander Kehr",
+      "email": "info@kehr-solutions.de",
+      "homepage": "https://www.kehr-solutions.de"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/BugBuster1701/contao-dlstats-statistic-export-bundle/issues",
+    "source": "https://github.com/BugBuster1701/contao-dlstats-statistic-export-bundle"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "require": {
+    "php": "^7.1",
+    "ext-pdo": "*",
+    "bugbuster/contao-dlstats-bundle": "1.1.0",
+    "contao/core-bundle": "^4.4",
+    "phpoffice/phpspreadsheet": "1.10.1",
+    "symfony/dependency-injection": "~3.4 || ^4.0",
+    "symfony/form": "~3.4 || ^4.0",
+    "symfony/translation": "~3.4 || ^4.0",
+    "symfony/validator": "~3.4 || ^4.0"
+  },
+  "require-dev": {
+    "contao/manager-plugin": "^2.1",
+    "friendsofphp/php-cs-fixer": "^2.12"
+  },
+  "autoload": {
+    "psr-4": {
+      "BugBuster\\DlstatsExportBundle\\": "src/"
+    }
+  },
+  "extra": {
+    "contao-manager-plugin": "BugBuster\\DlstatsExportBundle\\ContaoManager\\Plugin"
+  }
+}

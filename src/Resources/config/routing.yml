@@ -1,0 +1,3 @@
+bugbuster_dlstatsexport:
+    resource: '@BugBusterContaoDlstatsExportBundle/Controller'
+    type: annotation

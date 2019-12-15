@@ -1,0 +1,80 @@
+<style type="text/css">
+    .tl_export {
+        padding: 10px;
+        background: #f3f3f3;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .tl_formbody_edit {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .tl_form_field {
+        width: 100%;
+    }
+
+    .tl_form_field label {
+        font-weight: bold;
+    }
+
+    @media (min-width: 768px) {
+        .tl_formbody_edit {
+            display: flex;
+        }
+    }
+
+    @media (min-device-width: 768px) {
+        .tl_form_field {
+            display: flex;
+            align-items: center;
+        }
+
+        .tl_form_field label {
+            margin-right: .5rem;
+        }
+    }
+
+    .tl_form_field:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    @media (min-device-width: 768px) {
+        .tl_form_field:not(:last-child) {
+            margin-bottom: 0;
+            margin-right: 3rem;
+        }
+    }
+
+    .tl_form_field .tl_submit {
+        width: 100%;
+    }
+</style>
+<div class="tl_export">
+    {{ form_start(form) }}
+    {{ form_widget(form.REQUEST_TOKEN) }}
+    <div class="tl_formbody_edit">
+        <div class="tl_form_field">
+            <strong>{{ 'bugbuster.dlstat.export.title'|trans|raw }}</strong>
+        </div>
+        <div class="tl_form_field">
+            {{ form_label(form.year) }}
+            {{ form_widget(form.year) }}
+            {{ form_errors(form.year) }}
+        </div>
+        <div class="tl_form_field">
+            {{ form_label(form.month) }}
+            {{ form_widget(form.month) }}
+            {{ form_errors(form.month) }}
+        </div>
+        <div class="tl_form_field">
+            {{ form_label(form.format) }}
+            {{ form_widget(form.format) }}
+            {{ form_errors(form.format) }}
+        </div>
+        <div class="tl_form_field">
+            {{ form_widget(form.submit) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>
