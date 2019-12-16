@@ -8,11 +8,11 @@
     "counter",
     "export"
   ],
-  "license": "LGPL-3.0+",
+  "license": "LGPL-3.0-or-later",
   "authors": [
     {
       "name": "Glen Langer",
-      "homepage": "http://www.contao.glen-langer.de",
+      "homepage": "http://contao.ninja",
       "role": "Developer"
     },
     {
