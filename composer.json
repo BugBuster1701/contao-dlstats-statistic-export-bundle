@@ -31,7 +31,7 @@
   "require": {
     "php": "^7.1",
     "ext-pdo": "*",
-    "bugbuster/contao-dlstats-bundle": "1.1.0",
+    "bugbuster/contao-dlstats-bundle": "^1.1",
     "contao/core-bundle": "^4.4",
     "phpoffice/phpspreadsheet": "1.10.1",
     "symfony/dependency-injection": "~3.4 || ^4.0",
