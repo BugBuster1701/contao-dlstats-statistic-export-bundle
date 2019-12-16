@@ -3,3 +3,4 @@ services:
         class: BugBuster\DlstatsExportBundle\EventListener\ExportPanelListener
         arguments:
           ['@database_connection', '@service_container', '@request_stack']
+        public: true
