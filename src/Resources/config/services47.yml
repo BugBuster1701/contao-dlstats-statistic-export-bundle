@@ -1,0 +1,7 @@
+services:
+    bugbuster.dlstatsexport.form.type.request_token:
+        class: BugBuster\DlstatsExportBundle\Form\Type\RequestTokenType
+        arguments:
+          ['@contao.csrf.token_manager', '%contao.csrf_token_name%']
+        tags:
+            - form.type

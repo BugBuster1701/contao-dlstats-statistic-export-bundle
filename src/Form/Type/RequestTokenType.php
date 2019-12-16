@@ -55,17 +55,10 @@ class RequestTokenType extends HiddenType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        /**
-         * Contao 4.4 : security.csrf.token_manager
-         * Contao 4.7+: contao.csrf.token_manager
-         * Workaround used the old way. 
-         * Pending a better solution. (I don't like a version switch.)
-         */
         $resolver
             ->setDefaults(
                 [
-                    #'data' => $this->tokenManager->getToken($this->tokenName)->getValue(),
-                    'data' => \Contao\RequestToken::get(),
+                    'data' => $this->tokenManager->getToken($this->tokenName)->getValue(),
                 ]
             )
         ;
