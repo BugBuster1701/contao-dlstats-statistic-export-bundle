@@ -45,10 +45,6 @@ class ExportPanelListener
 
     /**
      * ExportPanelListener constructor.
-     *
-     * @param Connection         $connection
-     * @param ContainerInterface $container
-     * @param RequestStack       $requestStack
      */
     public function __construct(Connection $connection, ContainerInterface $container, RequestStack $requestStack)
     {
