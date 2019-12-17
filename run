@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+#Thanks Leo for this.
+
+#function phpunit() {
+#  if [[ ! -e ./vendor/bin/phpunit ]]; then
+#    echo "The vendor/bin/phpunit file is missing. Did you install the dependencies?"
+#    exit 1
+#  fi
+#
+#  vendor/bin/phpunit --testdox --colors
+#}
+
+function php-cs-fixer() {
+  if [[ ! -e ./vendor/bin/php-cs-fixer ]]; then
+    echo "The vendor/bin/php-cs-fixer file is missing. Did you install the dependencies?"
+    exit 1
+  fi
+
+  vendor/bin/php-cs-fixer fix -v
+}
+
+
+function usage() {
+  cat <<HEREDOC
+Usage: ./run [task]
+  phpunit       Run PhpUnit (not yet supported)
+  php-cs-fixer  Run the PHP-CS-Fixer
+HEREDOC
+}
+
+case "$1" in
+#  phpunit)
+#    phpunit
+#    exit 0
+#  ;;
+  php-cs-fixer)
+    php-cs-fixer
+    exit 0
+  ;;
+  *)
+    usage
+    exit 1
+  ;;
+esac
