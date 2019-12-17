@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+
+[contao-4-dlstats-bundle-add-on-statistic-export.messages-en-yml]
+file_filter = src/Resources/translations/messages.<lang>.yml
+minimum_perc = 10
+source_file = src/Resources/translations/messages.en.yml
+source_lang = en
+type = YAML_GENERIC
+
