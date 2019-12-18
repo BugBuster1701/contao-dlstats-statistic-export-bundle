@@ -1,0 +1,22 @@
+bugbuster:
+    dlstat:
+        export:
+            title: 'Экспорт статистики'
+            form:
+                labels:
+                    year: 'Год:'
+                    month: 'Месяц:'
+                    format: 'Формат:'
+                    all: 'Все'
+                buttons:
+                    export: 'Экспорт'
+            sheet:
+                header:
+                    browser_lang: 'Язык браузера'
+                    date: 'Дата'
+                    domain: 'Домен'
+                    filename: 'Имя файла'
+                    ip: 'IP'
+                    page_alias: 'Алиас станицы'
+                    page_host: 'Хост страницы'
+                    username: 'Имя пользователя'

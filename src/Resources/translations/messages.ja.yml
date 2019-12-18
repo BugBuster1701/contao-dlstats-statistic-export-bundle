@@ -1,0 +1,22 @@
+bugbuster:
+    dlstat:
+        export:
+            title: '統計をエクスポート'
+            form:
+                labels:
+                    year: '年:'
+                    month: '月:'
+                    format: '書式:'
+                    all: '全て'
+                buttons:
+                    export: 'エクスポート'
+            sheet:
+                header:
+                    browser_lang: 'ブラウザーの言語'
+                    date: '日付'
+                    domain: 'ドメイン'
+                    filename: 'ファイル名'
+                    ip: 'IP'
+                    page_alias: 'ページのエイリアス'
+                    page_host: 'ページのホスト'
+                    username: 'ユーザー名'
