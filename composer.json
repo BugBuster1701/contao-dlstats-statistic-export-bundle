@@ -12,7 +12,7 @@
   "authors": [
     {
       "name": "Glen Langer",
-      "homepage": "http://contao.ninja",
+      "homepage": "https://contao.ninja",
       "role": "Developer"
     },
     {
@@ -36,10 +36,10 @@
     "composer/semver": "^1.0",
     "jean85/pretty-package-versions": "^1.0",
     "phpoffice/phpspreadsheet": "1.10.1",
-    "symfony/dependency-injection": "~3.4 || ^4.0",
-    "symfony/form": "~3.4 || ^4.0",
-    "symfony/translation": "~3.4 || ^4.0",
-    "symfony/validator": "~3.4 || ^4.0"
+    "symfony/dependency-injection": "~3.4 || ^4.3",
+    "symfony/form": "~3.4 || ^4.3",
+    "symfony/translation": "~3.4 || ^4.3",
+    "symfony/validator": "~3.4 || ^4.3"
   },
   "require-dev": {
     "contao/manager-plugin": "^2.1",
