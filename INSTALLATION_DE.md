@@ -13,6 +13,8 @@ Es gibt zwei Arten der Installation.
 * Klick auf "Install Tool"
 * Anmelden und Datenbank Update durchführen
 
+Wenn Du "... symfony/form x.x.x conflicts with ..." dabei siehst, mußt Du ein komplettes Paket-Update durchführen. Markiere dazu alle Pakete zum aktualisieren.
+
 
 ## Installation über die Kommandozeile
 
