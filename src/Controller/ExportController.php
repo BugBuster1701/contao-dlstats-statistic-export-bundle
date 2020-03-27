@@ -110,8 +110,9 @@ class ExportController extends Controller
             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
             $fileName
         );
+        $response->deleteFileAfterSend(true);
 
-        return $response->send();
+        return $response;
     }
 
     /**
