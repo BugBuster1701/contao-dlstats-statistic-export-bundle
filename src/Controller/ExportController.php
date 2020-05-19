@@ -23,7 +23,7 @@ use PhpOffice\PhpSpreadsheet\Exception;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -32,7 +32,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/contao/dlstats/export", defaults={"_scope" = "backend", "_token_check" = true})
  */
-class ExportController extends Controller
+class ExportController extends AbstractController
 {
     /**
      * @var false|int
