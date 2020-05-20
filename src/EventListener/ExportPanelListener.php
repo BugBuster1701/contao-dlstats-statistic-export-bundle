@@ -72,6 +72,9 @@ class ExportPanelListener
 
         $months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
+        $labelfunc = function($value) { return 'bugbuster.dlstat.export.form.labels.' . $value; };
+        $monthlabels = array_map($labelfunc, range(1, 12));
+
         $form = $this->container->get('form.factory')->createNamedBuilder('export', FormType::class)
             ->getForm()
         ;
@@ -104,7 +107,7 @@ class ExportPanelListener
                 [
                     'label' => 'bugbuster.dlstat.export.form.labels.month',
                     'required' => true,
-                    'choices' => array_combine(array_merge(['bugbuster.dlstat.export.form.labels.all'], $months), array_merge(['all'], $months)),
+                    'choices' => array_combine(array_merge(['bugbuster.dlstat.export.form.labels.all'], $monthlabels), array_merge(['all'], $months)),
                     'attr' => [
                         'class' => 'tl_select',
                     ],
@@ -128,6 +131,7 @@ class ExportPanelListener
                     'attr' => [
                         'class' => 'tl_select',
                     ],
+                    'choice_translation_domain' => false,
                     'constraints' => new Choice(
                         [
                             'choices' => [
