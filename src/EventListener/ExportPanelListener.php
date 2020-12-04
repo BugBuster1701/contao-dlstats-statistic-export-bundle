@@ -72,7 +72,7 @@ class ExportPanelListener
 
         $months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-        $labelfunc = function($value) { return 'bugbuster.dlstat.export.form.labels.' . $value; };
+        $labelfunc = function ($value) { return 'bugbuster.dlstat.export.form.labels.'.$value; };
         $monthlabels = array_map($labelfunc, range(1, 12));
 
         $form = $this->container->get('form.factory')->createNamedBuilder('export', FormType::class)
