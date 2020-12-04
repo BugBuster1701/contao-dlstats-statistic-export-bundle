@@ -33,7 +33,7 @@
     "ext-pdo": "*",
     "bugbuster/contao-dlstats-bundle": "^1.1",
     "contao/core-bundle": "^4.4",
-    "composer/semver": "^1.0",
+    "composer/semver": "^1.0 || ^2.0 || ^3.0",
     "jean85/pretty-package-versions": "^1.0",
     "phpoffice/phpspreadsheet": "^1.10",
     "symfony/dependency-injection": "~3.4 || ^4.3",
