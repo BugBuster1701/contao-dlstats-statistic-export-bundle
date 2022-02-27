@@ -18,7 +18,6 @@ use Contao\CoreBundle\Translation\Translator;
 use Contao\Date;
 use Contao\PageModel;
 use Doctrine\DBAL\Connection;
-use PDO;
 use PhpOffice\PhpSpreadsheet\Exception;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -147,7 +146,7 @@ class ExportController extends AbstractController
             ;
         }
 
-        $downloads = $downloads->execute()->fetchAll(PDO::FETCH_OBJ);
+        $downloads = $downloads->executeQuery()->fetchAllAssociative();
 
         $this->sheet->getColumnDimension('A')->setAutoSize(true);
         $this->sheet->getColumnDimension('B')->setAutoSize(true);
@@ -185,14 +184,14 @@ class ExportController extends AbstractController
 
         foreach ($downloads as $download) {
             ++$row;
-            $this->sheet->setCellValue('A'.$row, $download->filename);
-            $this->sheet->setCellValue('B'.$row, Date::parse(Config::get('datimFormat'), $download->tstamp));
-            $this->sheet->setCellValue('C'.$row, $download->ip);
-            $this->sheet->setCellValue('D'.$row, $download->username);
-            $this->sheet->setCellValue('E'.$row, $download->domain);
-            $this->sheet->setCellValue('F'.$row, $download->page_host);
-            $this->sheet->setCellValue('G'.$row, $this->getPageAlias($download->page_id));
-            $this->sheet->setCellValue('H'.$row, $download->browser_lang);
+            $this->sheet->setCellValue('A'.$row, $download['filename']);
+            $this->sheet->setCellValue('B'.$row, Date::parse(Config::get('datimFormat'), $download['tstamp']));
+            $this->sheet->setCellValue('C'.$row, $download['ip']);
+            $this->sheet->setCellValue('D'.$row, $download['username']);
+            $this->sheet->setCellValue('E'.$row, $download['domain']);
+            $this->sheet->setCellValue('F'.$row, $download['page_host']);
+            $this->sheet->setCellValue('G'.$row, $this->getPageAlias($download['page_id']));
+            $this->sheet->setCellValue('H'.$row, $download['browser_lang']);
 
             //$row++;
         }

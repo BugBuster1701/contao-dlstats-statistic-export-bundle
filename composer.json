@@ -29,17 +29,18 @@
     "sort-packages": true
   },
   "require": {
-    "php": "^7.2 || ^8.0",
+    "php": "^7.4 || ^8.0",
     "ext-pdo": "*",
     "bugbuster/contao-dlstats-bundle": "^1.1",
-    "contao/core-bundle": "^4.4",
+    "contao/core-bundle": "^4.9",
     "composer/semver": "^3.0",
+    "doctrine/dbal": "^2.13 || ^3.3",
     "jean85/pretty-package-versions": "^1.5",
     "phpoffice/phpspreadsheet": "^1.16",
-    "symfony/dependency-injection": "~3.4 || ^4.3 || ^5.0",
-    "symfony/form": "~3.4 || ^4.3 || ^5.0",
-    "symfony/translation": "~3.4 || ^4.3 || ^5.0 ",
-    "symfony/validator": "~3.4 || ^4.3 || ^5.0"
+    "symfony/dependency-injection": "^4.3 || ^5.0",
+    "symfony/form": "^4.3 || ^5.0",
+    "symfony/translation": "^4.3 || ^5.0 ",
+    "symfony/validator": "^4.3 || ^5.0"
   },
   "require-dev": {
     "contao/manager-plugin": "^2.1",

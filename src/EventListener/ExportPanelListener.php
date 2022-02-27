@@ -15,7 +15,6 @@ namespace BugBuster\DlstatsExportBundle\EventListener;
 
 use BugBuster\DlstatsExportBundle\Form\Type\RequestTokenType;
 use Doctrine\DBAL\Connection;
-use PDO;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -66,8 +65,8 @@ class ExportPanelListener
             ->select("DISTINCT(FROM_UNIXTIME(tstamp,'%Y')) AS year")
             ->from('tl_dlstatdets')
             ->orderBy('year', 'DESC')
-            ->execute()
-            ->fetchAll(PDO::FETCH_COLUMN)
+            ->executeQuery()
+            ->fetchFirstColumn()
         ;
 
         $months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
