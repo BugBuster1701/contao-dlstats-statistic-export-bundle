@@ -146,7 +146,7 @@ class ExportController extends AbstractController
             ;
         }
 
-        $downloads = $downloads->executeQuery()->fetchAllAssociative();
+        $downloads = $downloads->execute()->fetchAllAssociative();
 
         $this->sheet->getColumnDimension('A')->setAutoSize(true);
         $this->sheet->getColumnDimension('B')->setAutoSize(true);

@@ -65,7 +65,7 @@ class ExportPanelListener
             ->select("DISTINCT(FROM_UNIXTIME(tstamp,'%Y')) AS year")
             ->from('tl_dlstatdets')
             ->orderBy('year', 'DESC')
-            ->executeQuery()
+            ->execute()
             ->fetchFirstColumn()
         ;
 
