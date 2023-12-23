@@ -15,6 +15,7 @@ namespace BugBuster\DlstatsExportBundle\EventListener;
 
 use BugBuster\DlstatsExportBundle\Form\Type\RequestTokenType;
 use Doctrine\DBAL\Connection;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -41,15 +42,20 @@ class ExportPanelListener
      * @var RequestStack
      */
     private $requestStack;
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
 
     /**
      * ExportPanelListener constructor.
      */
-    public function __construct(Connection $connection, ContainerInterface $container, RequestStack $requestStack)
+    public function __construct(Connection $connection, ContainerInterface $container, RequestStack $requestStack, FormFactoryInterface $formFactory)
     {
         $this->connection = $connection;
         $this->container = $container;
         $this->requestStack = $requestStack;
+        $this->formFactory = $formFactory;
     }
 
     /**
@@ -74,9 +80,10 @@ class ExportPanelListener
         $labelfunc = function ($value) { return 'bugbuster.dlstat.export.form.labels.'.$value; };
         $monthlabels = array_map($labelfunc, range(1, 12));
 
-        $form = $this->container->get('form.factory')->createNamedBuilder('export', FormType::class)
-            ->getForm()
-        ;
+        // $form = $this->container->get('form.factory')->createNamedBuilder('export', FormType::class)
+        //     ->getForm()
+        // ;
+        $form = $this->formFactory->createNamedBuilder('export', FormType::class)->getForm();
 
         $form
             ->add(

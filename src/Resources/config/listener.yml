@@ -2,5 +2,5 @@ services:
     bugbuster.dlstatsexport.listener.panel:
         class: BugBuster\DlstatsExportBundle\EventListener\ExportPanelListener
         arguments:
-          ['@database_connection', '@service_container', '@request_stack']
+          ['@database_connection', '@service_container', '@request_stack','@form.factory']
         public: true
