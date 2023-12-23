@@ -71,8 +71,8 @@ class ExportController extends AbstractController
      */
     public function onExport($year, $month, $format)
     {
-        $this->connection = $this->get('database_connection');
-        $this->translator = $this->get('translator');
+        $this->connection = $this->container->get('database_connection');
+        $this->translator = $this->container->get('translator');
 
         if ('all' !== $year) {
             $this->exportFrom = mktime(0, 0, 0, 1, 1, (int) $year);
@@ -88,7 +88,7 @@ class ExportController extends AbstractController
             $this->exportTo = mktime(23, 59, 59, (int) $month + 1, 0, (int) $year);
         }
 
-        $path = $this->get('kernel')->getCacheDir().'/contao/dlstats';
+        $path = $this->container->get('kernel')->getCacheDir().'/contao/dlstats';
         $fileName = 'export_'.Date::parse('Y-m-d_His', time()).'.'.$format;
         $fileSystem = new Filesystem();
 
@@ -146,7 +146,7 @@ class ExportController extends AbstractController
             ;
         }
 
-        $downloads = $downloads->execute()->fetchAllAssociative();
+        $downloads = $downloads->executeQuery()->fetchAllAssociative();
 
         $this->sheet->getColumnDimension('A')->setAutoSize(true);
         $this->sheet->getColumnDimension('B')->setAutoSize(true);
