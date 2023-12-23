@@ -1,7 +1,15 @@
 services:
+    _defaults: { autowire: true, autoconfigure: true, public: false }
+
     bugbuster.dlstatsexport.form.type.request_token:
         class: BugBuster\DlstatsExportBundle\Form\Type\RequestTokenType
         arguments:
-          ['@security.csrf.token_manager', '%contao.csrf_token_name%']
+          ['@contao.csrf.token_manager', '%contao.csrf_token_name%']
         tags:
             - form.type
+
+    BugBuster\DlstatsExportBundle\Controller\ExportController:
+        public: true
+        calls:
+            - method: setContainer
+              arguments: [ '@service_container' ]

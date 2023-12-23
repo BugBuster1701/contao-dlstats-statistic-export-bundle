@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace BugBuster\DlstatsExportBundle\DependencyInjection;
 
-use Jean85\PrettyVersions;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -31,14 +30,7 @@ class BugBusterContaoDlstatsExportExtension extends Extension
             new FileLocator(\dirname(__DIR__).'/Resources/config')
         );
 
-        // Common config, services and listeners
-        $version = PrettyVersions::getVersion('contao/core-bundle');
-        if (\Composer\Semver\Semver::satisfies($version->getShortVersion(), '>=4.7')) {
-            $loader->load('services47.yml');
-        } else {
-            $loader->load('services.yml');
-        }
-
+        $loader->load('services.yml');
         $loader->load('listener.yml');
     }
 }
