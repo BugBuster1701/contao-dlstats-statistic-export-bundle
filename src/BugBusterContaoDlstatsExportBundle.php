@@ -14,15 +14,12 @@ declare(strict_types=1);
 namespace BugBuster\DlstatsExportBundle;
 
 use BugBuster\DlstatsExportBundle\DependencyInjection\BugBusterContaoDlstatsExportExtension;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class BugBusterContaoDlstatsExportBundle extends Bundle
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getContainerExtension(): ?ExtensionInterface
+    public function getContainerExtension(): ExtensionInterface|null
     {
         return new BugBusterContaoDlstatsExportExtension();
     }

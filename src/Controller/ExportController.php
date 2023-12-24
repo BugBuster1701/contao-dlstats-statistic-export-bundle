@@ -3,12 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of a BugBuster Contao Bundle
- * @copyright  Glen Langer 2008..2022 <http://contao.ninja>
+ * This file is part of a BugBuster Contao Bundle.
+ *
+ * @copyright  Glen Langer 2023 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @author     Alexander Kehr (Kehr-Solutions) <https://www.kehr-solutions.de>
+ * @author     Alexander Kehr (Kehr-Solutions)
+ * @package    Contao Download Statistics Bundle (Dlstats) Add-on: Statistic Export
+ * @link       https://github.com/BugBuster1701/contao-dlstats-statistic-export-bundle
+ *
  * @license    LGPL-3.0-or-later
- * @see        https://github.com/BugBuster1701/contao-dlstats-statistic-export-bundle
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
  */
 
 namespace BugBuster\DlstatsExportBundle\Controller;
@@ -61,13 +66,9 @@ class ExportController extends AbstractController
     /**
      * @Route("/{year}/{month}/{format}", name="bugbuster_dlstats_export")
      *
-     * @param $year
-     * @param $month
-     * @param $format
+     * @return BinaryFileResponse
      *
      * @throws Exception
-     *
-     * @return BinaryFileResponse
      */
     public function onExport($year, $month, $format)
     {
@@ -80,7 +81,7 @@ class ExportController extends AbstractController
         }
 
         if ('all' === $year && 'all' !== $month) {
-            $year = \date('Y');
+            $year = date('Y');
         }
 
         if ('all' !== $month && 'all' !== $year) {
@@ -107,7 +108,7 @@ class ExportController extends AbstractController
         $response = new BinaryFileResponse($path.'/'.$fileName);
         $response->setContentDisposition(
             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-            $fileName
+            $fileName,
         );
         $response->deleteFileAfterSend(true);
 
@@ -130,7 +131,7 @@ class ExportController extends AbstractController
                     'tl_dlstatdets.page_host',
                     'tl_dlstatdets.page_id',
                     'tl_dlstatdets.browser_lang',
-                ]
+                ],
             )
             ->from('tl_dlstats')
             ->innerJoin('tl_dlstats', 'tl_dlstatdets', 'tl_dlstatdets', 'tl_dlstats.id=tl_dlstatdets.pid')
@@ -162,7 +163,7 @@ class ExportController extends AbstractController
                 'font' => [
                     'bold' => true,
                 ],
-            ]
+            ],
         );
 
         $this->sheet
@@ -193,13 +194,11 @@ class ExportController extends AbstractController
             $this->sheet->setCellValue('G'.$row, $this->getPageAlias($download['page_id']));
             $this->sheet->setCellValue('H'.$row, $download['browser_lang']);
 
-            //$row++;
+            // $row++;
         }
     }
 
     /**
-     * @param $id
-     *
      * @return string
      */
     private function getPageAlias($id)

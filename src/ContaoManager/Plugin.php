@@ -3,12 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of a BugBuster Contao Bundle
- * @copyright  Glen Langer 2008..2022 <http://contao.ninja>
+ * This file is part of a BugBuster Contao Bundle.
+ *
+ * @copyright  Glen Langer 2023 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @author     Alexander Kehr (Kehr-Solutions) <https://www.kehr-solutions.de>
+ * @author     Alexander Kehr (Kehr-Solutions)
+ * @package    Contao Download Statistics Bundle (Dlstats) Add-on: Statistic Export
+ * @link       https://github.com/BugBuster1701/contao-dlstats-statistic-export-bundle
+ *
  * @license    LGPL-3.0-or-later
- * @see        https://github.com/BugBuster1701/contao-dlstats-statistic-export-bundle
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
  */
 
 namespace BugBuster\DlstatsExportBundle\ContaoManager;
@@ -27,9 +32,6 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class Plugin implements BundlePluginInterface, ExtensionPluginInterface, RoutingPluginInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getBundles(ParserInterface $parser)
     {
         return [
@@ -38,14 +40,11 @@ class Plugin implements BundlePluginInterface, ExtensionPluginInterface, Routing
                     [
                         ContaoCoreBundle::class,
                         BugBusterDlstatsBundle::class,
-                    ]
+                    ],
                 ),
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getExtensionConfig($extensionName, array $extensionConfigs, ContainerBuilder $container)
     {
         if ('framework' === $extensionName) {
@@ -57,9 +56,6 @@ class Plugin implements BundlePluginInterface, ExtensionPluginInterface, Routing
         return $extensionConfigs;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getRouteCollection(LoaderResolverInterface $resolver, KernelInterface $kernel)
     {
         return $resolver
