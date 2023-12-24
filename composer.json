@@ -55,5 +55,18 @@
   },
   "extra": {
     "contao-manager-plugin": "BugBuster\\DlstatsExportBundle\\ContaoManager\\Plugin"
+  },
+  "scripts": {
+    "all": [
+        "@cs-fixer"
+    ],
+    "cs-fixer": [
+        "@ecs",
+        "@ecs-legacy",
+        "@ecs-template"
+    ],
+    "ecs": "@php tools/ecs/vendor/bin/ecs check src/ --config tools/ecs/config/default.php --fix --ansi",
+    "ecs-legacy": "@php tools/ecs/vendor/bin/ecs check src/Resources/contao/ --config tools/ecs/config/legacy.php --fix --ansi",
+    "ecs-template": "@php tools/ecs/vendor/bin/ecs check src/Resources/contao/templates --config tools/ecs/config/template.php --fix --ansi"
   }
 }

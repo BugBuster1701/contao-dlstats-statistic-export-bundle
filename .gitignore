@@ -1,6 +1,6 @@
-# IDEs
-/.idea/
-
 # Composer
 /vendor/
-/composer.lock
+composer.lock
+
+#ECS
+tools/ecs/vendor/
