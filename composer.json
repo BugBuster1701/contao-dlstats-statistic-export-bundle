@@ -65,6 +65,6 @@
         "@ecs-legacy"
     ],
     "ecs": "@php tools/ecs/vendor/bin/ecs check src/ --config tools/ecs/config/default.php --fix --ansi",
-    "ecs-legacy": "@php tools/ecs/vendor/bin/ecs check src/Resources/contao/ --config tools/ecs/config/legacy.php --fix --ansi",
+    "ecs-legacy": "@php tools/ecs/vendor/bin/ecs check src/Resources/contao/ --config tools/ecs/config/legacy.php --fix --ansi"
   }
 }
