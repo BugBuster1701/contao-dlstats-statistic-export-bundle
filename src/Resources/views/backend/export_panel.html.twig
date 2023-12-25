@@ -1,10 +1,4 @@
 <style type="text/css">
-    .tl_export {
-        padding: 10px;
-        background: #f3f3f3;
-        border-bottom: 1px solid #ddd;
-    }
-
     .tl_formbody_edit {
         padding-left: 10px;
         padding-right: 10px;
@@ -50,10 +44,10 @@
         width: 100%;
     }
 </style>
-<div class="tl_export">
+<div class="tl_listing_container list_view">
     {{ form_start(form) }}
     {{ form_widget(form.REQUEST_TOKEN) }}
-    <div class="tl_formbody_edit">
+    <div class="tl_formbody_edit tl_folder_tlist">
         <div class="tl_form_field">
             <strong>{{ 'bugbuster.dlstat.export.title'|trans|raw }}</strong>
         </div>
