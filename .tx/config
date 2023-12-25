@@ -1,10 +1,13 @@
 [main]
-host = https://www.transifex.com
+host = https://app.transifex.com
 
-[contao-4-dlstats-bundle-add-on-statistic-export.messages-en-yml]
-file_filter = src/Resources/translations/messages.<lang>.yml
-minimum_perc = 10
-source_file = src/Resources/translations/messages.en.yml
-source_lang = en
-type = YAML_GENERIC
+[o:bugbuster:p:contao-dlstats-bundle-add-on-statistic-export:r:messages-en-yml]
+file_filter            = src/Resources/translations/messages.<lang>.yml
+source_file            = src/Resources/translations/messages.en.yml
+source_lang            = en
+type                   = YAML_GENERIC
+minimum_perc           = 0
+resource_name          = messages-en-yml
+replace_edited_strings = false
+keep_translations      = false
 

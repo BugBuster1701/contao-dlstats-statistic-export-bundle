@@ -3,12 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of a BugBuster Contao Bundle
- * @copyright  Glen Langer 2008..2022 <http://contao.ninja>
+ * This file is part of a BugBuster Contao Bundle.
+ *
+ * @copyright  Glen Langer 2023 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @author     Alexander Kehr (Kehr-Solutions) <https://www.kehr-solutions.de>
+ * @author     Alexander Kehr (Kehr-Solutions)
+ * @package    Contao Download Statistics Bundle (Dlstats) Add-on: Statistic Export
+ * @link       https://github.com/BugBuster1701/contao-dlstats-statistic-export-bundle
+ *
  * @license    LGPL-3.0-or-later
- * @see        https://github.com/BugBuster1701/contao-dlstats-statistic-export-bundle
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
  */
 
 namespace BugBuster\DlstatsExportBundle\EventListener;
@@ -19,6 +24,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Validator\Constraints\Choice;
@@ -37,27 +43,34 @@ class ExportPanelListener
      * @var ContainerInterface
      */
     private $container;
+
     /**
      * @var RequestStack
      */
     private $requestStack;
 
     /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    /**
      * ExportPanelListener constructor.
      */
-    public function __construct(Connection $connection, ContainerInterface $container, RequestStack $requestStack)
+    public function __construct(Connection $connection, ContainerInterface $container, RequestStack $requestStack, FormFactoryInterface $formFactory)
     {
         $this->connection = $connection;
         $this->container = $container;
         $this->requestStack = $requestStack;
+        $this->formFactory = $formFactory;
     }
 
     /**
+     * @return string|RedirectResponse
+     *
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
-     *
-     * @return string|RedirectResponse
      */
     public function onGetPanelLine()
     {
@@ -65,23 +78,24 @@ class ExportPanelListener
             ->select("DISTINCT(FROM_UNIXTIME(tstamp,'%Y')) AS year")
             ->from('tl_dlstatdets')
             ->orderBy('year', 'DESC')
-            ->execute()
+            ->executeQuery()
             ->fetchFirstColumn()
         ;
 
         $months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-        $labelfunc = function ($value) { return 'bugbuster.dlstat.export.form.labels.'.$value; };
+        $labelfunc = static fn ($value) => 'bugbuster.dlstat.export.form.labels.'.$value;
         $monthlabels = array_map($labelfunc, range(1, 12));
 
-        $form = $this->container->get('form.factory')->createNamedBuilder('export', FormType::class)
-            ->getForm()
-        ;
+        // $form = $this->container->get('form.factory')->createNamedBuilder('export', FormType::class)
+        //     ->getForm()
+        // ;
+        $form = $this->formFactory->createNamedBuilder('export', FormType::class)->getForm();
 
         $form
             ->add(
                 'REQUEST_TOKEN',
-                RequestTokenType::class
+                RequestTokenType::class,
             )
             ->add(
                 'year',
@@ -96,9 +110,9 @@ class ExportPanelListener
                     'constraints' => new Choice(
                         [
                             'choices' => array_merge(['all'], $years),
-                        ]
+                        ],
                     ),
-                ]
+                ],
             )
             ->add(
                 'month',
@@ -113,9 +127,9 @@ class ExportPanelListener
                     'constraints' => new Choice(
                         [
                             'choices' => array_merge(['all'], $months),
-                        ]
+                        ],
                     ),
-                ]
+                ],
             )
             ->add(
                 'format',
@@ -137,9 +151,9 @@ class ExportPanelListener
                                 'xlsx',
                                 'csv',
                             ],
-                        ]
+                        ],
                     ),
-                ]
+                ],
             )
             ->add(
                 'submit',
@@ -149,7 +163,7 @@ class ExportPanelListener
                     'attr' => [
                         'class' => 'tl_submit',
                     ],
-                ]
+                ],
             )
         ;
 
@@ -158,24 +172,18 @@ class ExportPanelListener
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-            $url = $this->container->get('router')->generate(
-                'bugbuster_dlstats_export',
-                [
-                    'year' => $data['year'],
-                    'month' => $data['month'],
-                    'format' => $data['format'],
-                ]
-            );
+            $url = $this->container->get('router')->generate('bugbuster_dlstats_export', [
+                'year' => $data['year'],
+                'month' => $data['month'],
+                'format' => $data['format'],
+            ]);
 
             $response = new RedirectResponse($url);
             $response->send();
         }
 
-        return $this->container->get('twig')->render(
-            '@BugBusterContaoDlstatsExport/backend/export_panel.html.twig',
-            [
-                'form' => $form->createView(),
-            ]
-        );
+        return $this->container->get('twig')->render('@BugBusterContaoDlstatsExport/backend/export_panel.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

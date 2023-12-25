@@ -1,4 +1,4 @@
-# Contao 4 dlstats statistic export bundle
+# Contao 5 dlstats statistic export bundle
 
 
 [![Latest Stable Version](https://poser.pugx.org/bugbuster/contao-dlstats-statistic-export-bundle/v/stable)](https://packagist.org/packages/bugbuster/contao-dlstats-statistic-export-bundle) [![Total Downloads](https://poser.pugx.org/bugbuster/contao-dlstats-statistic-export-bundle/downloads)](https://packagist.org/packages/bugbuster/contao-dlstats-statistic-export-bundle) [![Latest Unstable Version](https://poser.pugx.org/bugbuster/contao-dlstats-statistic-export-bundle/v/unstable)](https://packagist.org/packages/bugbuster/contao-dlstats-statistic-export-bundle) [![License](https://poser.pugx.org/bugbuster/contao-dlstats-statistic-export-bundle/license)](https://packagist.org/packages/bugbuster/contao-dlstats-statistic-export-bundle) 
@@ -8,7 +8,7 @@
 
 ## About
 
-Contao 4 dlstats Bundle Add-on: Statistic Export
+Contao 5 dlstats Bundle Add-on: Statistic Export
 
 
 ## Installation
@@ -22,6 +22,6 @@ Installationsanleitung (DE): [INSTALLATION_DE.md](INSTALLATION_DE.md)
 
 Translations are managed using Transifex. To create a new translation or to help to maintain an existing one, please register at transifex.com.
 
-Project Link: [https://www.transifex.com/bugbuster/contao-4-dlstats-bundle-add-on-statistic-export/](https://www.transifex.com/bugbuster/contao-4-dlstats-bundle-add-on-statistic-export/)
+Project Link: [https://www.transifex.com/bugbuster/contao-dlstats-bundle-add-on-statistic-export/](https://www.transifex.com/bugbuster/contao-dlstats-bundle-add-on-statistic-export/)
 
 Howto: [http://docs.transifex.com/faq/#translating](http://docs.transifex.com/faq/#translating)
