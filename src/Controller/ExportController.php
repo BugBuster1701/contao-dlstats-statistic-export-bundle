@@ -33,9 +33,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/contao/dlstats/export", defaults={"_scope" = "backend", "_token_check" = true})
- */
+#[Route('/contao/dlstats/export', defaults: ['_scope' => 'backend', '_token_check' => true])]
 class ExportController extends AbstractController
 {
     /**
@@ -64,12 +62,11 @@ class ExportController extends AbstractController
     private $translator;
 
     /**
-     * @Route("/{year}/{month}/{format}", name="bugbuster_dlstats_export")
-     *
      * @return BinaryFileResponse
      *
      * @throws Exception
      */
+    #[Route('/{year}/{month}/{format}', name: 'bugbuster_dlstats_export')]
     public function onExport($year, $month, $format)
     {
         $this->connection = $this->container->get('database_connection');
