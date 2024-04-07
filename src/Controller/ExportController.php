@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of a BugBuster Contao Bundle.
  *
- * @copyright  Glen Langer 2023 <http://contao.ninja>
+ * @copyright  Glen Langer 2024 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @author     Alexander Kehr (Kehr-Solutions)
  * @package    Contao Download Statistics Bundle (Dlstats) Add-on: Statistic Export
@@ -144,8 +144,6 @@ class ExportController extends AbstractController
             ;
         }
 
-        $downloads = $downloads->executeQuery()->fetchAllAssociative();
-
         $this->sheet->getColumnDimension('A')->setAutoSize(true);
         $this->sheet->getColumnDimension('B')->setAutoSize(true);
         $this->sheet->getColumnDimension('C')->setAutoSize(true);
@@ -174,13 +172,10 @@ class ExportController extends AbstractController
             ->setCellValue('H1', $this->translator->trans('bugbuster.dlstat.export.sheet.header.browser_lang'))
         ;
 
-        if (empty($downloads)) {
-            return;
-        }
-
+        $downloads = $downloads->executeQuery();
         $row = 1;
 
-        foreach ($downloads as $download) {
+        foreach ($downloads->iterateAssociative() as $download) {
             ++$row;
             $this->sheet->setCellValue('A'.$row, $download['filename']);
             $this->sheet->setCellValue('B'.$row, Date::parse(Config::get('datimFormat'), $download['tstamp']));
@@ -190,8 +185,6 @@ class ExportController extends AbstractController
             $this->sheet->setCellValue('F'.$row, $download['page_host']);
             $this->sheet->setCellValue('G'.$row, $this->getPageAlias($download['page_id']));
             $this->sheet->setCellValue('H'.$row, $download['browser_lang']);
-
-            // $row++;
         }
     }
 
@@ -204,7 +197,7 @@ class ExportController extends AbstractController
             return '';
         }
 
-        $objPage = PageModel::findByPk($id);
+        $objPage = PageModel::findById($id);
 
         if (null === $objPage) {
             return $id;
