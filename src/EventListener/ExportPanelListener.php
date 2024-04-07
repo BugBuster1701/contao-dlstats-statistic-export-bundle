@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of a BugBuster Contao Bundle.
  *
- * @copyright  Glen Langer 2023 <http://contao.ninja>
+ * @copyright  Glen Langer 2024 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @author     Alexander Kehr (Kehr-Solutions)
  * @package    Contao Download Statistics Bundle (Dlstats) Add-on: Statistic Export
@@ -87,11 +87,9 @@ class ExportPanelListener
         $labelfunc = static fn ($value) => 'bugbuster.dlstat.export.form.labels.'.$value;
         $monthlabels = array_map($labelfunc, range(1, 12));
 
-        // $form = $this->container->get('form.factory')->createNamedBuilder('export', FormType::class)
-        //     ->getForm()
-        // ;
+        // $form = $this->container->get('form.factory')->createNamedBuilder('export',
+        // FormType::class)->getForm() ;
         $form = $this->formFactory->createNamedBuilder('export', FormType::class)->getForm();
-
         $form
             ->add(
                 'REQUEST_TOKEN',
