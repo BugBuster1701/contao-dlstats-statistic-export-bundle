@@ -29,10 +29,11 @@ use Contao\ManagerPlugin\Config\ExtensionPluginInterface;
 use Contao\ManagerPlugin\Routing\RoutingPluginInterface;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Routing\RouteCollection;
 
 class Plugin implements BundlePluginInterface, ExtensionPluginInterface, RoutingPluginInterface
 {
-    public function getBundles(ParserInterface $parser)
+    public function getBundles(ParserInterface $parser): array
     {
         return [
             BundleConfig::create(BugBusterContaoDlstatsExportBundle::class)
@@ -56,7 +57,7 @@ class Plugin implements BundlePluginInterface, ExtensionPluginInterface, Routing
         return $extensionConfigs;
     }
 
-    public function getRouteCollection(LoaderResolverInterface $resolver, KernelInterface $kernel)
+    public function getRouteCollection(LoaderResolverInterface $resolver, KernelInterface $kernel): RouteCollection|null
     {
         return $resolver
             ->resolve(\dirname(__DIR__).'/Resources/config/routing.yml')
