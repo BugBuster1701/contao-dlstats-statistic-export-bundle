@@ -29,14 +29,14 @@
     "sort-packages": true
   },
   "require": {
-    "php": "^7.4 || ^8.0",
+    "php": "^8.2",
     "ext-pdo": "*",
     "bugbuster/contao-dlstats-bundle": "^1.1",
-    "contao/core-bundle": "^4.9",
+    "contao/core-bundle": "^4.13",
     "composer/semver": "^3.0",
     "doctrine/dbal": "^2.13 || ^3.3",
     "jean85/pretty-package-versions": "^1.5",
-    "phpoffice/phpspreadsheet": "^1.16",
+    "phpoffice/phpspreadsheet": "^2.2",
     "symfony/dependency-injection": "^4.3 || ^5.0",
     "symfony/form": "^4.3 || ^5.0",
     "symfony/translation": "^4.3 || ^5.0 ",
