@@ -34,7 +34,7 @@
     }
   },
   "require": {
-    "php": ">=8.3.0,<8.4.0",
+    "php": ">=8.3.0,<8.5.0",
     "ext-pdo": "*",
     "bugbuster/contao-dlstats-bundle": "^1.6",
     "contao/core-bundle": ">=5.4.0,<5.7.0",
