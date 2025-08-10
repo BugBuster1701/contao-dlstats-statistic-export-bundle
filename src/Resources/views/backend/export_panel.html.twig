@@ -45,7 +45,7 @@
     }
 </style>
 <div class="tl_listing_container list_view">
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'data-turbo': 'false'}}) }}
     {{ form_widget(form.REQUEST_TOKEN) }}
     <div class="tl_formbody_edit tl_folder_tlist">
         <div class="tl_form_field">
