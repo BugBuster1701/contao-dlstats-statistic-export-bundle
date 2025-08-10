@@ -38,7 +38,7 @@
     "ext-pdo": "*",
     "bugbuster/contao-dlstats-bundle": "^1.6",
     "contao/core-bundle": ">=5.4.0,<5.7.0",
-    "doctrine/dbal": "^3.6",
+    "doctrine/dbal": "^3.6.2 || ^4.3",
     "phpoffice/phpspreadsheet": "^3.4 || ^4.0",
     "symfony/dependency-injection": "^6.4 || ^7.0",
     "symfony/form": "^6.4 || ^7.0",
