@@ -118,17 +118,14 @@ class ExportController extends AbstractController
     private function onGenerateExportData(): void
     {
         $downloads = $this->connection->createQueryBuilder()
-            ->select(
-                [
-                    'tl_dlstats.filename',
+            ->select('tl_dlstats.filename',
                     'tl_dlstatdets.tstamp',
                     'tl_dlstatdets.ip',
                     'tl_dlstatdets.username',
                     'tl_dlstatdets.domain',
                     'tl_dlstatdets.page_host',
                     'tl_dlstatdets.page_id',
-                    'tl_dlstatdets.browser_lang',
-                ],
+                    'tl_dlstatdets.browser_lang'
             )
             ->from('tl_dlstats')
             ->innerJoin('tl_dlstats', 'tl_dlstatdets', 'tl_dlstatdets', 'tl_dlstats.id=tl_dlstatdets.pid')
