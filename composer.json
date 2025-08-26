@@ -39,7 +39,7 @@
     "bugbuster/contao-dlstats-bundle": "^1.4",
     "contao/core-bundle": "5.3.*",
     "doctrine/dbal": "^3.6",
-    "phpoffice/phpspreadsheet": "^3.4 || ^4.0",
+    "phpoffice/phpspreadsheet": "^3.4 || ^4.0 || ^5.0",
     "symfony/dependency-injection": "^6.4",
     "symfony/form": "^6.4",
     "symfony/translation": "^6.4 ",
