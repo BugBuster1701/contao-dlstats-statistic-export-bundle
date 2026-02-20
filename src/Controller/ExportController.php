@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of a BugBuster Contao Bundle.
  *
- * @copyright  Glen Langer 2024 <http://contao.ninja>
+ * @copyright  Glen Langer 2026 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @author     Alexander Kehr (Kehr-Solutions)
  * @package    Contao Download Statistics Bundle (Dlstats) Add-on: Statistic Export
@@ -119,13 +119,13 @@ class ExportController extends AbstractController
     {
         $downloads = $this->connection->createQueryBuilder()
             ->select('tl_dlstats.filename',
-                    'tl_dlstatdets.tstamp',
-                    'tl_dlstatdets.ip',
-                    'tl_dlstatdets.username',
-                    'tl_dlstatdets.domain',
-                    'tl_dlstatdets.page_host',
-                    'tl_dlstatdets.page_id',
-                    'tl_dlstatdets.browser_lang'
+                'tl_dlstatdets.tstamp',
+                'tl_dlstatdets.ip',
+                'tl_dlstatdets.username',
+                'tl_dlstatdets.domain',
+                'tl_dlstatdets.page_host',
+                'tl_dlstatdets.page_id',
+                'tl_dlstatdets.browser_lang',
             )
             ->from('tl_dlstats')
             ->innerJoin('tl_dlstats', 'tl_dlstatdets', 'tl_dlstatdets', 'tl_dlstats.id=tl_dlstatdets.pid')
