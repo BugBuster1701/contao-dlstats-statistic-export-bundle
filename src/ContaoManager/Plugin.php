@@ -33,6 +33,11 @@ use Symfony\Component\Routing\RouteCollection;
 
 class Plugin implements BundlePluginInterface, ExtensionPluginInterface, RoutingPluginInterface
 {
+    /**
+     * Gets a list of autoload configurations for this bundle.
+     *
+     * @return array<ConfigInterface>
+     */
     public function getBundles(ParserInterface $parser): array
     {
         return [
@@ -46,7 +51,7 @@ class Plugin implements BundlePluginInterface, ExtensionPluginInterface, Routing
         ];
     }
 
-    public function getExtensionConfig($extensionName, array $extensionConfigs, ContainerBuilder $container)
+    public function getExtensionConfig($extensionName, array $extensionConfigs, ContainerBuilder $container): array
     {
         if ('framework' === $extensionName) {
             $extensionConfigs[] = [
@@ -57,6 +62,11 @@ class Plugin implements BundlePluginInterface, ExtensionPluginInterface, Routing
         return $extensionConfigs;
     }
 
+    /**
+     * getRouteCollection.
+     *
+     * @return RouteCollection|null
+     */
     public function getRouteCollection(LoaderResolverInterface $resolver, KernelInterface $kernel): RouteCollection|null
     {
         return $resolver
